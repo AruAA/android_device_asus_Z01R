@@ -54,6 +54,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     AntHalService
 
+PRODUCT_PACKAGES += \
+    NoCutoutOverlay
+	
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
