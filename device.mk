@@ -176,8 +176,8 @@ PRODUCT_PACKAGES += \
 #    telephony-ext
 
 # Trust HAL
-PRODUCT_PACKAGES += \
-    lineage.trust@1.0-service
+#PRODUCT_PACKAGES += \
+#    lineage.trust@1.0-service
 
 # Touch
 #PRODUCT_PACKAGES += \
