@@ -691,4 +691,8 @@
 	
 	<!-- Whether the device has fingeprint sensor or not -->
     <bool name="config_hasFingerprintSensor">true</bool>
+	
+    <!-- Hide notch  -->
+    <bool name="config_physicalDisplayCutout">true</bool>
+
 </resources>
