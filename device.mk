@@ -68,6 +68,11 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.ims.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.telephony.ims.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/handheld_core_hardware.xml
 
+# Google Permissions
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/oem-permissions/google/pixel4_template.xml:system/etc/permissions/pixel4_template.xml \
+        $(LOCAL_PATH)/oem-permissions/google/android.hardware.camera.ar.xml:system/etc/permissions/android.hardware.camera.ar.xml
+
 # Boot control
 PRODUCT_PACKAGES_DEBUG += \
     android.hardware.boot@1.0-impl.recovery \
