@@ -1,9 +1,9 @@
 [
   {
     "remote": "github",
-    "repository": "rohanpurohit/proprietary_vendor_asus",
+    "repository": "rohanpurohit/vendor_asus_z01r",
     "target_path": "vendor/asus",
-    "branch": "lineage-16.0"
+    "branch": "lineage-17.0"
   },
   {
     "remote": "github",
