@@ -30,7 +30,7 @@ CUSTOM_BUILD_TYPE := OFFICIAL
 TARGET_SUPPORTS_GOOGLE_RECORDER := false
 TARGET_INCLUDE_STOCK_ARCORE := true
 $(call inherit-product, vendor/aosp/config/common_full_phone.mk)
-$(call inherit-product-if-exists, vendor/pixelgapps/pixel-gapps.mk)
+TARGET_INCLUDE_WIFI_EXT := true
 
 PRODUCT_BRAND := asus
 PRODUCT_DEVICE := Z01R
