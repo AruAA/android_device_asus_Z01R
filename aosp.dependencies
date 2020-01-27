@@ -10,5 +10,13 @@
     "repository": "AruAA/android_kernel_asus_sdm845-ten",
     "target_path": "kernel/asus/sdm845",
     "branch": "lineage-17.0"
+	
+  },
+  {
+	"remote": "github",
+    "repository"  : "AruAA/device_twrp",
+    "target_path" : "device/twrp/Z01R",
+    "branch"      : "Z01R",
+    "clone-depth" : "1"
   }
 ]
