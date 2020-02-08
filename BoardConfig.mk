@@ -168,9 +168,5 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_Z01R
 TARGET_RECOVERY_DEVICE_MODULES := libinit_Z01R
 
-# Prebuilt TWRP include
--include device/twrp/Z01R/twrp.mk
-
-
 # Inherit from the proprietary version
 -include vendor/asus/Z01R/BoardConfigVendor.mk

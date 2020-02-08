@@ -1,22 +1,14 @@
 [
   {
     "remote": "github",
-    "repository": "rohanpurohit/vendor_asus_z01r",
+    "repository": "rohanpurohit/proprietary_vendor_asus",
     "target_path": "vendor/asus",
     "branch": "lineage-17.0"
   },
   {
     "remote": "github",
-    "repository": "AruAA/android_kernel_asus_sdm845-ten",
+    "repository": "kailashrs/android_kernel_asus_sdm845",
     "target_path": "kernel/asus/sdm845",
-    "branch": "lineage-17.0"
-	
+    "branch": "q"
   },
-  {
-	"remote": "github",
-    "repository"  : "AruAA/device_twrp",
-    "target_path" : "device/twrp/Z01R",
-    "branch"      : "Z01R",
-    "clone-depth" : "1"
-  }
 ]
