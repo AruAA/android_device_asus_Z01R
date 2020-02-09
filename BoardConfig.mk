@@ -168,5 +168,7 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_Z01R
 TARGET_RECOVERY_DEVICE_MODULES := libinit_Z01R
 
+KERNEL_CROSS_COMPILE += CROSS_COMPILE_ARM32="arm-linux-androidkernel-"
+
 # Inherit from the proprietary version
 -include vendor/asus/Z01R/BoardConfigVendor.mk
