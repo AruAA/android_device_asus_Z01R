@@ -1,7 +1,7 @@
 [
   {
     "remote": "github",
-    "repository": "AruAA/vendor_asus_z01r",
+    "repository": "AruAA/proprietary_vendor_asus",
     "target_path": "vendor/asus",
     "branch": "lineage-17.0"
   },
