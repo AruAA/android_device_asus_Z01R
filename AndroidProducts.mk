@@ -15,4 +15,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/aosp_Z01R.mk
+    $(LOCAL_DIR)/potato_Z01R.mk
+
+COMMON_LUNCH_CHOICES := \
+    potato_Z01R-user \
+    potato_Z01R-userdebug \
+    potato_Z01R-eng

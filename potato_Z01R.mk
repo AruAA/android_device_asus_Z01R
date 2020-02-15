@@ -26,16 +26,16 @@ $(call inherit-product, device/asus/Z01R/device.mk)
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_BOOT_ANIMATION_RES_EVO := true
 TARGET_GAPPS_ARCH := arm64
-CUSTOM_BUILD_TYPE := OFFICIAL
+CUSTOM_BUILD_TYPE := UNOFFICIAL
 TARGET_SUPPORTS_GOOGLE_RECORDER := false
-TARGET_INCLUDE_STOCK_ARCORE := false
-$(call inherit-product, vendor/aosp/common.mk)
+TARGET_INCLUDE_STOCK_ARCORE := true
+$(call inherit-product, vendor/potato/config/common_full_phone.mk)
 
 PRODUCT_BRAND := asus
 PRODUCT_DEVICE := Z01R
 PRODUCT_MANUFACTURER := asus
 PRODUCT_MODEL := Zenfone 5Z
-PRODUCT_NAME := aosp_Z01R
+PRODUCT_NAME := potato_Z01R
 
 PRODUCT_GMS_CLIENTID_BASE := android-asus
 
