@@ -180,3 +180,6 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_Z01R
 
 # Inherit from the proprietary version
 -include vendor/asus/Z01R/BoardConfigVendor.mk
+
+# Fix video playback issue
+TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := (1 << 10) | (1 << 13)
