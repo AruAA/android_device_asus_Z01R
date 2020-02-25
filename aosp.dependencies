@@ -1,7 +1,7 @@
 [
   {
     "remote": "github",
-    "repository": "AruAA/proprietary_vendor_asus",
+    "repository": "rohanpurohit/proprietary_vendor_asus",
     "target_path": "vendor/asus",
     "branch": "lineage-17.0"
   },
