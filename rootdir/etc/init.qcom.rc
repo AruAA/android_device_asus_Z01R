@@ -1,64 +1,8 @@
-on post-fs
-    mount none /system/etc/audio_policy_configuration.xml /vendor/etc/audio/audio_policy_configuration.xml bind
-    mount none /system/etc/audio_policy_configuration.xml /vendor/etc/audio_policy_configuration.xml bind
-    mount none /system/lib64/hw/power.qcom.so /vendor/lib64/hw/power.qcom.so bind
-    mount none /system/lib/libril-qc-hal-qmi.so /vendor/lib/libril-qc-hal-qmi.so bind
-    mount none /system/lib64/libril-qc-hal-qmi.so /vendor/lib64/libril-qc-hal-qmi.so bind
-
 on boot
-    mount none /system/overlay/BluetoothResCommon.apk /vendor/overlay/BluetoothResCommon.apk bind
-
     # FocalTech Gesture
     # /sys/devices/platform/soc/894000.i2c/i2c-3/3-0038/
-    chown system system /sys/bus/i2c/devices/3-0038/fts_dclick_mode
-    chmod 0660 /sys/bus/i2c/devices/3-0038/fts_dclick_mode
-
-    chown system system /sys/bus/i2c/devices/3-0038/fts_swipe_mode
-    chmod 0660 /sys/bus/i2c/devices/3-0038/fts_swipe_mode
-
-    chown system system /sys/bus/i2c/devices/3-0038/fts_gesture_mode
-    chmod 0660 /sys/bus/i2c/devices/3-0038/fts_gesture_mode
-
-    chown system system /sys/bus/i2c/devices/3-0038/fts_gesture_buf
-    chmod 0660 /sys/bus/i2c/devices/3-0038/fts_gesture_buf
-
-    chown system system /sys/bus/i2c/devices/3-0038/fts_glove_mode
-    chmod 0660 /sys/bus/i2c/devices/3-0038/fts_glove_mode
-
-    chown system system /sys/bus/i2c/devices/3-0038/fts_cover_mode
-    chmod 0660 /sys/bus/i2c/devices/3-0038/fts_cover_mode
-
     chown system system /sys/devices/platform/soc/0.goodix_gf5228/proximity_state
     chmod 0660 /sys/devices/platform/soc/0.goodix_gf5228/proximity_state
 
-# Gesture properties
-# Temp (dclick)
-on property:persist.dclick.on=0
-    write /sys/bus/i2c/devices/3-0038/fts_dclick_mode 0
-
-on property:persist.dclick.on=1
-    write /sys/bus/i2c/devices/3-0038/fts_dclick_mode 1
-
-on property:persist.screengesture=0
-    write /sys/bus/i2c/devices/3-0038/fts_gesture_mode 0
-
-on property:persist.screengesture=1
-    write /sys/bus/i2c/devices/3-0038/fts_gesture_mode 1
-
 on charger
     write /sys/class/backlight/panel0-backlight/brightness 150
-
-on init
-# Create the audio-app stune node
-    mkdir /dev/stune/audio-app
-    chown system system /dev/stune/audio-app
-    chown system system /dev/stune/audio-app/tasks
-    chmod 0664 /dev/stune/audio-app/tasks
-    
-# Create the audio-app cpuset
-    mkdir /dev/cpuset/audio-app
-    copy /dev/cpuset/cpus /dev/cpuset/audio-app/cpus
-    copy /dev/cpuset/mems /dev/cpuset/audio-app/mems
-    chown system system /dev/cpuset/audio-app
-    chown system system /dev/cpuset/audio-app/tasks
-    chmod 0664 /dev/cpuset/audio-app/tasks

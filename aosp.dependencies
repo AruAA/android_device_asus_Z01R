@@ -3,11 +3,11 @@
     "remote": "github",
     "repository": "rohanpurohit/proprietary_vendor_asus",
     "target_path": "vendor/asus",
-    "branch": "lineage-17.0"
+    "branch": "lineage-17.1"
   },
   {
     "remote": "github",
-    "repository": "kailashrs/android_kernel_asus_sdm845",
+    "repository": "BlissRoms-Devices/android_kernel_asus_sdm845",
     "target_path": "kernel/asus/sdm845",
     "branch": "q"
   },
@@ -31,3 +31,4 @@
     "clone-depth" : "1"
   }
 ]
+

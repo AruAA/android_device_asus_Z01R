@@ -19,18 +19,22 @@ DEVICE_PATH := device/asus/Z01R
 
 TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_PATH)/include
 
+ALLOW_MISSING_DEPENDENCIES := true
+
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-2a
+TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a75
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := kryo385
 
 TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv8-2a
+TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a75
+TARGET_2ND_CPU_VARIANT := generic
+TARGET_2ND_CPU_VARIANT_RUNTIME := kryo385
 
 TARGET_USES_64_BIT_BINDER := true
 
@@ -46,18 +50,11 @@ DEXPREOPT_GENERATE_APEX_IMAGE := true
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth/include
 
-# Display
-TARGET_HAS_HDR_DISPLAY := true
-TARGET_HAS_WIDE_COLOR_DISPLAY := true
-TARGET_USES_COLOR_METADATA := true
-TARGET_USES_DRM_PP := true
-
 # Kernel
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET     := 0x01000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE += buildv=WW_90.11.162.72
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
@@ -66,24 +63,25 @@ NEED_KERNEL_MODULE_SYSTEM := true
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/asus/sdm845
 TARGET_KERNEL_CONFIG := Z01R_defconfig
-TARGET_KERNEL_NEW_GCC_COMPILE := true
 
 # Platform
-#BOARD_USES_QCOM_HARDWARE := true
+BOARD_USES_QCOM_HARDWARE := true
 BUILD_WITHOUT_VENDOR := true
 TARGET_BOARD_PLATFORM := sdm845
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno630
 
+# Filesystem
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
+
 # FM
-#BOARD_HAS_QCA_FM_SOC := "cherokee"
-#BOARD_HAVE_QCOM_FM := true
+BOARD_HAS_QCA_FM_SOC := "cherokee"
+BOARD_HAVE_QCOM_FM := true
 
 # Properties
 BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 # Treble
 BOARD_VNDK_VERSION := current
-PRODUCT_EXTRA_VNDK_VERSIONS := 28
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
@@ -93,7 +91,7 @@ AUDIO_FEATURE_ENABLED_AAC_ADTS_OFFLOAD := true
 AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
 AUDIO_FEATURE_ENABLED_HDMI_SPK := true
 AUDIO_FEATURE_ENABLED_PROXY_DEVICE := true
-#USE_CUSTOM_AUDIO_POLICY := 1
+USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 
@@ -113,6 +111,9 @@ DEVICE_FRAMEWORK_MANIFEST_FILE := $(DEVICE_PATH)/framework_manifest.xml
 # Network Routing
 TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 
+# Power
+TARGET_TAP_TO_WAKE_NODE := "/proc/driver/dclick"
+
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608
@@ -120,11 +121,6 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 2986344448
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 52554575872
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
-TARGET_COPY_OUT_VENDOR := vendor
-BOARD_USES_PRODUCTIMAGE := true
-
-# Power
-TARGET_TAP_TO_WAKE_NODE := "/sys/devices/platform/soc/894000.i2c/i2c-3/3-0038/fts_dclick_mode"
 
 # Recovery
 BOARD_USES_RECOVERY_AS_BOOT := true
@@ -136,13 +132,13 @@ TARGET_USERIMAGES_USE_F2FS := true
 TARGET_USES_MKE2FS := true
 
 # Root
-BOARD_ROOT_EXTRA_FOLDERS := acct odm oem
+BOARD_ROOT_EXTRA_FOLDERS := odm oem
+
 BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/ADF:/ADF \
     /vendor/APD:/APD \
     /vendor/asdf:/asdf \
-    /vendor/factory:factory \
-    /vendor/xrom:xrom
+    /vendor/factory:factory
 
 # RIL
 TARGET_RIL_VARIANT := caf
@@ -151,33 +147,22 @@ TARGET_RIL_VARIANT := caf
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 TARGET_USES_ALTERNATIVE_MANUAL_NETWORK_SELECT := true
 
-#include device/lineage/sepolicy/common/sepolicy.mk
-
 # Sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
     device/qcom/sepolicy/generic/private \
-    $(DEVICE_PATH)/sepolicy/qcom-qva-private
+    device/qcom/sepolicy/qva/private
 
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
     device/qcom/sepolicy/generic/public \
     device/qcom/sepolicy/qva/public
 
-#SELINUX_IGNORE_NEVERALLOWS := true
-
 # Verified Boot
 BOARD_AVB_ENABLE := true
 BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flag 2
 
-# Vendor init
-TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_Z01R
-TARGET_RECOVERY_DEVICE_MODULES := libinit_Z01R
-
-# Prebuilt TWRP include
--include device/twrp/Z01R/twrp.mk
-
 # Inherit from the proprietary version
 -include vendor/asus/Z01R/BoardConfigVendor.mk
 
-# Fix video playback issue
-TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := (1 << 10) | (1 << 13)
+#test
+TARGET_COPY_OUT_VENDOR := vendor

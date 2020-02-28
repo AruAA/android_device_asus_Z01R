@@ -73,9 +73,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # IMS
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1
-	persist.rcs.supported=1 \
+    persist.dbg.vt_avail_ovr=1
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -92,12 +90,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     telephony.lteOnCdmaDevice=1 \
     DEVICE_PROVISIONED=1 \
     ro.telephony.default_network=22,22
-	persist.radio.data_con_rprt=1 \
-    persist.radio.VT_ENABLE=1 \
-    persist.radio.volte.dan_support=true \
-    persist.data.iwlan=1 \
-    persist.data.iwlan.ipsec.ap=1 \
-    persist.sys.cust.lte_config=true
 
 # Expose AUX
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -107,7 +99,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.sensors.enable.mag_filter=true
 
-# Gesture
+# Vendor
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.dclick.on=1 \
-    persist.screengesture=1
+    ro.vendor.qti.va_aosp.support=1
