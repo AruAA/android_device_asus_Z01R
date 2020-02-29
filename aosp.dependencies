@@ -1,9 +1,9 @@
 [
   {
     "remote": "github",
-    "repository": "rohanpurohit/proprietary_vendor_asus",
+    "repository": "BlissRoms-Devices/proprietary_vendor_asus",
     "target_path": "vendor/asus",
-    "branch": "lineage-17.1"
+    "branch": "q"
   },
   {
     "remote": "github",
